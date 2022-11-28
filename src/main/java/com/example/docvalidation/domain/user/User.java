@@ -1,4 +1,4 @@
-package com.example.docvalidation.domain;
+package com.example.docvalidation.domain.user;
 
 import javax.persistence.*;
 
