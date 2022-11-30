@@ -4,9 +4,11 @@ VALUES
     ('Adrian', 'Makowski', 21);
 
 INSERT INTO
-    documents(name_of_cert, company, user_id)
+    documents(id, name_of_cert, company, user_id)
 VALUES
-    ('Google Internetowe rewolucje', 'Google', 1);
+    ('HDS12', 'Google', 'Internetowe rewolucje', 1),
+    ('RTF54', 'SQL', 'Software company', 1),
+    ('EBM82', 'Podstawy API', 'Java Solution', 1);
 
 
 
