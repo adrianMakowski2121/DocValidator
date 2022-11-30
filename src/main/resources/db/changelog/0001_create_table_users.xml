@@ -11,6 +11,7 @@
             </column>
             <column name="first_Name" type="VARCHAR(20)"/>
             <column name="last_Name" type="VARCHAR(20)"/>
+            <column name="age" type="BIGINT"/>
         </createTable>
     </changeSet>
 </databaseChangeLog>
