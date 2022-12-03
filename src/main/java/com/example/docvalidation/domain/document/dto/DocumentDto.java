@@ -7,12 +7,22 @@ public class DocumentDto {
     private String nameOfCert;
     private String company;
     private String user;
+    private Long userId;
 
-    public DocumentDto(String id, String nameOfCert, String company, String user) {
+    public DocumentDto(String id, String nameOfCert, String company, String user, Long userId) {
         this.id = id;
         this.nameOfCert = nameOfCert;
         this.company = company;
         this.user = user;
+        this.userId = userId;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
     public String getId() {
