@@ -13,11 +13,16 @@ public class DocumentService {
     public DocumentService(DocumentRepository documentRepository, DocumentDtoMapper documentDtoMapper) {
         this.documentRepository = documentRepository;
         this.documentDtoMapper = documentDtoMapper;
+
     }
 
     Optional<DocumentDto> getDocumentById(String id) {
         return documentRepository.findById(id.toUpperCase()).map(documentDtoMapper::map);
     }
 
-
+    DocumentDto saveDocument(DocumentDto documentDto) {
+        Document document = documentDtoMapper.map(documentDto);
+        Document save = documentRepository.save(document);
+        return documentDtoMapper.map(save);
+    }
 }
