@@ -16,6 +16,17 @@ public class Document {
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
 
+    public Document(String id, String nameOfCert, String company, User user) {
+        this.id = id;
+        this.nameOfCert = nameOfCert;
+        this.company = company;
+        this.user = user;
+    }
+
+    public Document() {
+
+    }
+
     public String getId() {
         return id;
     }

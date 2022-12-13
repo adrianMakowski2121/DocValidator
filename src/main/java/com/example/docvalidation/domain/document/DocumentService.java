@@ -1,6 +1,7 @@
 package com.example.docvalidation.domain.document;
 
 import com.example.docvalidation.domain.document.dto.DocumentDto;
+import com.example.docvalidation.domain.document.dto.DocumentSaveDto;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -20,8 +21,8 @@ public class DocumentService {
         return documentRepository.findById(id.toUpperCase()).map(documentDtoMapper::map);
     }
 
-    DocumentDto saveDocument(DocumentDto documentDto) {
-        Document document = documentDtoMapper.map(documentDto);
+    DocumentDto saveDocument(DocumentSaveDto documentSaveDto) {
+        Document document = documentDtoMapper.mapSave(documentSaveDto);
         Document save = documentRepository.save(document);
         return documentDtoMapper.map(save);
     }

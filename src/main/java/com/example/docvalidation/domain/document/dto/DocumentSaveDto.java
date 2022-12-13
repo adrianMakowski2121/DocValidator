@@ -3,14 +3,14 @@ package com.example.docvalidation.domain.document.dto;
 import com.example.docvalidation.domain.document.IdGenerator;
 import com.example.docvalidation.domain.user.User;
 
-public class DocumentDto {
+public class DocumentSaveDto {
     private String id;
     private String nameOfCert;
     private String company;
     private Long userId;
 
-    public DocumentDto(String id, String nameOfCert, String company, Long userId) {
-        this.id = id;
+    public DocumentSaveDto(String nameOfCert, String company, Long userId) {
+        this.id = IdGenerator.generateId();
         this.nameOfCert = nameOfCert;
         this.company = company;
         this.userId = userId;

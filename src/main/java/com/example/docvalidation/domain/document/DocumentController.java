@@ -1,6 +1,7 @@
 package com.example.docvalidation.domain.document;
 
 import com.example.docvalidation.domain.document.dto.DocumentDto;
+import com.example.docvalidation.domain.document.dto.DocumentSaveDto;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -22,8 +23,8 @@ public class DocumentController {
     }
 
     @PostMapping
-    ResponseEntity<DocumentDto> save(@RequestBody DocumentDto documentDto) {
-        DocumentDto savedDocument = documentService.saveDocument(documentDto);
+    ResponseEntity<DocumentDto> save(@RequestBody DocumentSaveDto documentSaveDtoDto) {
+        DocumentDto savedDocument = documentService.saveDocument(documentSaveDtoDto);
         URI savedDocumentUri = ServletUriComponentsBuilder.fromCurrentRequest()
                 .path("/{id}")
                 .buildAndExpand(savedDocument.getId())

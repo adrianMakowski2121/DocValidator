@@ -1,6 +1,7 @@
 package com.example.docvalidation.domain.document;
 
 import com.example.docvalidation.domain.document.dto.DocumentDto;
+import com.example.docvalidation.domain.document.dto.DocumentSaveDto;
 import com.example.docvalidation.domain.user.User;
 import com.example.docvalidation.domain.user.UserRepository;
 import org.springframework.stereotype.Service;
@@ -16,23 +17,16 @@ public class DocumentDtoMapper {
     }
 
     public DocumentDto map(Document document) {
-        DocumentDto documentDto = new DocumentDto(
-                document.getId(),
-                document.getNameOfCert(),
-                document.getCompany(),
-                document.getUser().getFirstName(),
-                document.getUser().getId());
-
-        return documentDto;
+        return new DocumentDto(document.getId(), document.getNameOfCert(), document.getCompany(), document.getUser().getId());
     }
 
     public Document map(DocumentDto dto) {
-        Document document = new Document();
-        document.setId(dto.getId());
-        document.setNameOfCert(dto.getNameOfCert());
-        document.setCompany(dto.getCompany());
         User user = userRepository.findById(dto.getUserId()).orElseThrow();
-        document.setUser(user);
-        return document;
+        return new Document(dto.getId(), dto.getNameOfCert(), dto.getCompany(), user);
+    }
+
+    public Document mapSave(DocumentSaveDto documentSaveDto) {
+        User user = userRepository.findById(documentSaveDto.getUserId()).orElseThrow();
+        return new Document(documentSaveDto.getId(), documentSaveDto.getNameOfCert(), documentSaveDto.getCompany(), user);
     }
 }
