@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/document")
@@ -30,5 +31,11 @@ public class DocumentController {
                 .buildAndExpand(savedDocument.getId())
                 .toUri();
         return ResponseEntity.created(savedDocumentUri).body(savedDocument); 
+    }
+
+    @GetMapping("/all-doc")
+    List<DocumentDto> getAllDocs() {
+        return documentService.getAllDocs();
+
     }
 }

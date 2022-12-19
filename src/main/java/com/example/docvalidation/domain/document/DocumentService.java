@@ -4,6 +4,7 @@ import com.example.docvalidation.domain.document.dto.DocumentDto;
 import com.example.docvalidation.domain.document.dto.DocumentSaveDto;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -25,5 +26,10 @@ public class DocumentService {
         Document document = documentDtoMapper.mapSave(documentSaveDto);
         Document save = documentRepository.save(document);
         return documentDtoMapper.map(save);
+    }
+
+    List<DocumentDto> getAllDocs() {
+        List<DocumentDto> documentDtos = documentRepository.findAllDocuments().stream().map(documentDtoMapper::map).toList();
+        return documentDtos;
     }
 }
