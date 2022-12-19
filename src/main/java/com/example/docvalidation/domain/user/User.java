@@ -1,6 +1,10 @@
 package com.example.docvalidation.domain.user;
 
+import com.example.docvalidation.domain.document.Document;
+
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -11,6 +15,8 @@ public class User {
     private Long id;
     private String firstName;
     private String lastName;
+    @OneToMany(mappedBy = "user")
+    private List<Document> documents = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -34,5 +40,13 @@ public class User {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public List<Document> getDocuments() {
+        return documents;
+    }
+
+    public void setDocuments(List<Document> documents) {
+        this.documents = documents;
     }
 }
